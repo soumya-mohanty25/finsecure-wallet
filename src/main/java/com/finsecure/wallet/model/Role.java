@@ -1,7 +1,11 @@
 package com.finsecure.wallet.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.util.Date;
 
 @Entity
 @Data
@@ -29,4 +33,25 @@ public class Role {
 
     @Column(name = "max_assignments")
     private Long maxAssignments;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "created_by")
+    @JsonIgnore
+    private User createdBy;
+
+    @CreatedDate
+    @Column(name = "created_on")
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonIgnore
+    private Date createdOn;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "last_updated_by")
+    @JsonIgnore
+    private User lastUpdatedBy;
+
+    @Column(name = "last_updated_on")
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonIgnore
+    private Date lastUpdatedOn;
 }
