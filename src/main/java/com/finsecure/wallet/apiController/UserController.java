@@ -52,7 +52,7 @@ public class UserController {
             attr.addFlashAttribute("error_msg", userServiceOutcome.getMessage());
         }
 
-        return "redirect:/public/umt/user/registration";
+        return "redirect:/user/registration";
     }
 
     @GetMapping(
