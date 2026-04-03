@@ -18,4 +18,19 @@ public class Citizen {
 
     @Column(name = "lastname")
     private String lastName;
+
+    @Column(name = "phone_number", length = 15)
+    private String phoneNumber;
+
+    @Column(name = "email_id", unique = true)
+    private String emailId;
+
+    @Column(name = "gender")
+    private String gender;
+
+    @Column(name = "address", columnDefinition = "TEXT")
+    private String address;
+
+    @Column(name = "profile_picture_path")
+    private String profilePicturePath;
 }
