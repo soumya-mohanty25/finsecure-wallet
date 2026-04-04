@@ -5,6 +5,7 @@ import java.util.List;
 import com.finsecure.wallet.common.ServiceOutcome;
 import com.finsecure.wallet.model.Role;
 import com.finsecure.wallet.service.RoleService;
+import lombok.extern.slf4j.Slf4j;
 import org.jboss.logging.Logger;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@Slf4j
 @RequestMapping({"/admin/role"})
 public class RoleController {
-    private final Logger log = Logger.getLogger(this.getClass());
+
     @Autowired
     private RoleService roleService;
 

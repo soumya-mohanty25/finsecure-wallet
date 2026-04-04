@@ -28,6 +28,9 @@ public class Citizen {
     @Column(name = "gender")
     private String gender;
 
+    @Column(name = "id_proof_no", unique = true)
+    private String idProofNo;
+
     @Column(name = "address", columnDefinition = "TEXT")
     private String address;
 
