@@ -10,14 +10,19 @@ public class WalletBlockHistory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "wallet_block_id")
+    private Long blockId;
 
     @ManyToOne
+    @JoinColumn(name = "wallet")
     private Wallet wallet;
 
+    @Column(name = "action_type")
     private String actionType;
 
+    @Column(name = "remarks")
     private String remarks;
 
+    @Column(name = "action_date")
     private Date actionDate;
 }

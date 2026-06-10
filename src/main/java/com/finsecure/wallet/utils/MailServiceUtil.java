@@ -1,15 +1,13 @@
 package com.finsecure.wallet.utils;
 
-import jakarta.mail.*;
-import jakarta.mail.internet.*;
-import jakarta.mail.util.ByteArrayDataSource;
 import jakarta.activation.DataHandler;
 import jakarta.activation.DataSource;
 import jakarta.mail.*;
-import jakarta.mail.internet.*;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMultipart;
 import jakarta.mail.util.ByteArrayDataSource;
-import jakarta.activation.DataHandler;
-import jakarta.activation.DataSource;
 import jakarta.servlet.ServletContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +16,9 @@ import org.springframework.stereotype.Component;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.ResourceBundle;
-import java.util.logging.Logger;
 
-@Slf4j
 @Component("frameworkMailServiceUtil")
+@Slf4j
 public class MailServiceUtil {
 
     @Autowired
@@ -60,26 +57,6 @@ public class MailServiceUtil {
             MimeBodyPart htmlPart = new MimeBodyPart();
             htmlPart.setContent(body, "text/html; charset=UTF-8");
             multipart.addBodyPart(htmlPart);
-
-            // ---------- IMAGE PART ----------
-            MimeBodyPart imagePart = new MimeBodyPart();
-
-            InputStream imageStream = servletContext.getResourceAsStream("/assets/img/india-logo.png");
-
-            if (imageStream == null) {
-                log.error("Image NOT FOUND at /assets/img/Emblem_of_India.png");
-                throw new RuntimeException("Image NOT FOUND at /assets/img/Emblem_of_India.png");
-            }
-
-            byte[] imageBytes = imageStream.readAllBytes();
-            DataSource ds = new ByteArrayDataSource(imageBytes, "image/png");
-
-            imagePart.setDataHandler(new DataHandler(ds));
-            imagePart.setHeader("Content-ID", "<govLogo>");
-            imagePart.setDisposition(MimeBodyPart.INLINE);
-
-
-            multipart.addBodyPart(imagePart);
 
             if (pdfBytes != null) {
 

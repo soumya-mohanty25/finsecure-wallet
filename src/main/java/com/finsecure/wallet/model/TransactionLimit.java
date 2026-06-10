@@ -10,11 +10,15 @@ public class TransactionLimit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "transaction_limit_id")
+    private Long limitId;
 
+    @Column(name = "daily_limit")
     private BigDecimal dailyLimit;
 
+    @Column(name = "monthly_limit")
     private BigDecimal monthlyLimit;
 
+    @Column(name = "single_txn_limit")
     private BigDecimal singleTxnLimit;
 }
