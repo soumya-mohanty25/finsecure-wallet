@@ -163,7 +163,7 @@ public final class EmailTemplateUtil {
     private static String signOff() {
         return "<p style='margin:20px 0 0 0;'>" +
                 "With regards,<br>" +
-                "<strong> Lok Bhavan, Odisha</strong>" +
+                "<strong> FinSecure Wallet </strong>" +
                 "</p></td></tr>";
     }
 }

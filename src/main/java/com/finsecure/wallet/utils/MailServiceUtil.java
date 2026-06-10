@@ -46,7 +46,7 @@ public class MailServiceUtil {
             });
 
             MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(rb.getString("mail.username"), "Governor Secretariat", "UTF-8"));
+            message.setFrom(new InternetAddress(rb.getString("mail.username"), "FinSecure Wallet", "UTF-8"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mailTo));
             message.setSubject(subject, "UTF-8");
 
